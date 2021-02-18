@@ -6,6 +6,7 @@ import Folder from './Folder';
 import Navbar from './Navbar';
 import { useParams, useLocation } from 'react-router-dom';
 import FolderBreadCrumbs from './FolderBreadCrumbs';
+import AddFile from './AddFile';
 
 const Dashboard = () => {
   const { folderId } = useParams();
@@ -18,6 +19,7 @@ const Dashboard = () => {
       <Container fluid>
         <div className="d-flex align-items-center">
           <FolderBreadCrumbs currentFolder={ folder }/>
+          <AddFile currentFolder={ folder }/>
           <AddFolder currentFolder={ folder }/>
         </div>
         { childFolders.length > 0 && (
