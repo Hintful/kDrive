@@ -33,7 +33,7 @@ export default function Signin() {
   return (
     <>
       <Toaster />
-      <h1 className="text-center mb-5">kDrive</h1>
+      <h1 className="text-center mb-5 title"><span className="emphasis"><i class="fas fa-code title-logo"></i> k</span>Drive</h1>
       <Card>
         <Card.Body>
           <h3 className="text-center mb-4">Sign In</h3>
