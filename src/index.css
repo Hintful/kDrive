@@ -5,9 +5,21 @@
 .title {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 3em;
+  
+  /* make text non-selectable */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 .title-logo {
   font-size: 0.9em;
+
+  /* make text non-selectable */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .emphasis {

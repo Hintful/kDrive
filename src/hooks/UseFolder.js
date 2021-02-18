@@ -9,7 +9,7 @@ const ACTIONS = {
 }
 
 // root folder
-const ROOT = {
+export const ROOT = {
   name: "Root",
   id: null,
   path: []

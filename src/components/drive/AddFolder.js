@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { database } from '../../firebase'
 import { useAuth } from '../../contexts/AuthContext';
+import { ROOT } from '../../hooks/UseFolder';
 
 const AddFolder = ({ currentFolder }) => {
   const [modal, setModal] = useState(false); // modal = true if modal is open, false otherwise
@@ -12,8 +13,6 @@ const AddFolder = ({ currentFolder }) => {
     setModal(!modal);
   }
 
-  
-
   const handleSubmit = (e) => {
     e.preventDefault(); // stop refresh
 
@@ -21,10 +20,19 @@ const AddFolder = ({ currentFolder }) => {
       return
     }
 
+    const path = [...currentFolder.path]
+    if(currentFolder !== ROOT) {
+      path.push({ 
+        name: currentFolder.name,
+        id: currentFolder.id
+      })
+    }
+
     database.folders.add({
       name: name,
       parentFolderId: currentFolder.id,
       owner: currentUser.uid,
+      path: path,
       createdAt: database.getCurrentTimestamp()
     })
     setName("");
