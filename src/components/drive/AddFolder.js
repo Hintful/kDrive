@@ -44,7 +44,7 @@ const AddFolder = ({ currentFolder }) => {
         variant="outline-success"
         size="sm"
       >
-        <i className="fas fa-folder-plus"></i> Add Folder
+        <i className="fas fa-folder-plus"></i> Create New Folder
       </Button>
       <Modal
         show={modal} onHide={toggleModal}

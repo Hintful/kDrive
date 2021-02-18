@@ -18,7 +18,8 @@ const Dashboard = () => {
     <>
       <Navbar />
       <Container fluid>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center pb-4">
+          📁&nbsp;
           <FolderBreadCrumbs currentFolder={ folder }/>
           <AddFile currentFolder={ folder }/>
           <AddFolder currentFolder={ folder }/>

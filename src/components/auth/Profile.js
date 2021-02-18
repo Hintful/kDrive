@@ -39,10 +39,13 @@ const Profile = () => {
           <strong>Email:</strong> { currentUser.email}
           <Link to="/update-profile" className="btn btn-info w-100 mt-3">Update Profile</Link>
           <Link to="/" className="btn btn-primary w-100 mt-3">Back to Dashboard</Link>
+          <Link to="" className="btn btn-outline-danger w-100 mt-3" onClick={handleSignOut}>Sign Out</Link>
+
+          {/* <Button className="btn btn-outline-danger w-100 mt-3" variant="link" style={{ color: "red" }} onClick={handleSignOut}>Sign Out</Button> */}
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleSignOut}>Sign Out</Button>
+        
       </div>  
     </CenteredContainer>
   );
