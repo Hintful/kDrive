@@ -67,15 +67,28 @@ const AddFile = ({ currentFolder }) => {
           return uploadingFile.id !== id
         })
       })
-      
+
+      // check if file with same name exists at the directory of upload
+      // if so, overwrite
       uploadTask.snapshot.ref.getDownloadURL().then(url => {
-        // console.log(url);
-        database.files.add({
-          url,
-          name: file.name,
-          createdAt: database.getCurrentTimestamp(),
-          folderId: currentFolder.id,
-          owner: currentUser.uid
+        database.files
+        .where("name", "==", file.name)
+        .where("owner", "==",  currentUser.uid)
+        .where("folderId", "==", currentFolder.id)
+        .get()
+        .then(existingFiles => {
+          const existingFile = existingFiles.docs[0];
+          if (existingFile) {
+            existingFile.ref.update({ url });
+          } else {
+            database.files.add({
+              url,
+              name: file.name,
+              createdAt: database.getCurrentTimestamp(),
+              folderId: currentFolder.id,
+              owner: currentUser.uid
+            })
+          }
         })
       })
     })
