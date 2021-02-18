@@ -37,7 +37,8 @@ const Profile = () => {
             <Alert variant="danger">{error}</Alert>
           }
           <strong>Email:</strong> { currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
+          <Link to="/update-profile" className="btn btn-info w-100 mt-3">Update Profile</Link>
+          <Link to="/" className="btn btn-primary w-100 mt-3">Back to Dashboard</Link>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
