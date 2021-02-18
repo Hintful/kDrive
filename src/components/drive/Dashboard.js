@@ -25,7 +25,7 @@ const Dashboard = () => {
         </div>
 
         { childFolders.length > 0 && (
-          <div classname="d-flex flex-wrap">
+          <div classname="d-flex flex-wrap" style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
             { childFolders.map(childFolder => (
               <div key={childFolder.id} style={{ maxWidth: 250 }} className="p-2">
                 <Folder folder={childFolder} />
@@ -37,7 +37,7 @@ const Dashboard = () => {
         { childFolders.length > 0 && childFiles.length > 0 && <hr /> }
 
         { childFiles.length > 0 && (
-          <div classname="d-flex flex-wrap">
+          <div classname="d-flex flex-wrap" style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
             { childFiles.map(childFile => (
               <div key={childFile.id} style={{ maxWidth: 250 }} className="p-2">
                 <File file={childFile} />
