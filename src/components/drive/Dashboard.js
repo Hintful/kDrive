@@ -7,11 +7,12 @@ import Navbar from './Navbar';
 import { useParams, useLocation } from 'react-router-dom';
 import FolderBreadCrumbs from './FolderBreadCrumbs';
 import AddFile from './AddFile';
+import File from './File';
 
 const Dashboard = () => {
   const { folderId } = useParams();
   const { state = {} } = useLocation();
-  const { folder, childFolders } = UseFolder(folderId, state.folder);
+  const { folder, childFolders, childFiles } = UseFolder(folderId, state.folder);
 
   return (
     <>
@@ -22,6 +23,7 @@ const Dashboard = () => {
           <AddFile currentFolder={ folder }/>
           <AddFolder currentFolder={ folder }/>
         </div>
+
         { childFolders.length > 0 && (
           <div classname="d-flex flex-wrap">
             { childFolders.map(childFolder => (
@@ -31,6 +33,19 @@ const Dashboard = () => {
             ))}
           </div>
         )}
+
+        { childFolders.length > 0 && childFiles.length > 0 && <hr /> }
+
+        { childFiles.length > 0 && (
+          <div classname="d-flex flex-wrap">
+            { childFiles.map(childFile => (
+              <div key={childFile.id} style={{ maxWidth: 250 }} className="p-2">
+                <File file={childFile} />
+              </div>
+            ))}
+          </div>
+        )}
+
       </Container>
     </>
   );
