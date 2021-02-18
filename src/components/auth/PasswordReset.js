@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Card, Form, Button, Alert } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function PasswordReset() {
   const emailRef = useRef();

@@ -1,14 +1,14 @@
 import React from 'react';
-import Signup from './Signup';
+import Signup from './auth/Signup';
 import { Container } from 'react-bootstrap';
 import { AuthProvider } from "../contexts/AuthContext";
 import { MemoryRouter as Router } from 'react-router';
 import { Switch, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
-import Signin from './Signin';
-import PrivateRoute from './PrivateRoute';
-import PasswordReset from './PasswordReset';
-import UpdateProfile from './UpdateProfile';
+import Signin from './auth/Signin';
+import PrivateRoute from './auth/PrivateRoute';
+import PasswordReset from './auth/PasswordReset';
+import UpdateProfile from './auth/UpdateProfile';
 
 function App() {
   return (
