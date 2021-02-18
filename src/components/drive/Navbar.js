@@ -8,7 +8,7 @@ const NavbarComponent = () => {
       bg="light" expand="lg"
     >
       <Navbar.Brand as={Link} to="/">
-        <span className="emphasis"><i class="fas fa-code title-logo"></i> k</span>Drive
+        <span className="emphasis"><i className="fas fa-code title-logo"></i> k</span>Drive
       </Navbar.Brand>
       <Nav>
         <Nav.Link as={Link} to="/user">

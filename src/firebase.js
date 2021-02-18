@@ -21,5 +21,8 @@ const firestore = app.firestore();
 export const database = { // make object out of only required firestore data
     folders: firestore.collection('folders'),
     files: firestore.collection('files'),
-    getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp
+    getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp,
+    formatDoc: doc => {
+        return { id: doc.id, ...doc.data() }
+    }
 }

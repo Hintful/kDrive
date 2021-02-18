@@ -3,21 +3,22 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import { database } from '../../firebase'
 import { useAuth } from '../../contexts/AuthContext';
 
-const AddFolder = () => {
+const AddFolder = ({ currentFolder }) => {
   const [modal, setModal] = useState(false); // modal = true if modal is open, false otherwise
   const [name, setName] = useState(""); // state values for add folder name
-  const [currentFolder, setCurrentFolder] = useState(null);
   const { currentUser } = useAuth();
 
   const toggleModal = () => {
     setModal(!modal);
   }
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault(); // stop refresh
 
     if (currentFolder == null) {
-      return // must be in a folder or root
+      return
     }
 
     database.folders.add({
@@ -35,7 +36,7 @@ const AddFolder = () => {
         variant="outline-success"
         size="sm"
       >
-        <i class="fas fa-folder-plus"></i> Add Folder
+        <i className="fas fa-folder-plus"></i> Add Folder
       </Button>
       <Modal
         show={modal} onHide={toggleModal}
