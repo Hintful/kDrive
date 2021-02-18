@@ -1,6 +1,5 @@
 import React from 'react';
 import Signup from './auth/Signup';
-import { Container } from 'react-bootstrap';
 import { AuthProvider } from "../contexts/AuthContext";
 import { MemoryRouter as Router } from 'react-router';
 import { Switch, Route } from 'react-router-dom';
