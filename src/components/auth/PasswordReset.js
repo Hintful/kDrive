@@ -3,6 +3,7 @@ import { Card, Form, Button, Alert } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import CenteredContainer from '../CenteredContainer';
 
 export default function PasswordReset() {
   const emailRef = useRef();
@@ -26,7 +27,7 @@ export default function PasswordReset() {
   }
     
   return (
-    <>
+    <CenteredContainer>
       <Toaster />
       <Card>
         <Card.Body>
@@ -49,6 +50,6 @@ export default function PasswordReset() {
       <div className="w-100 text-center mt-2">
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </div>  
-    </>
+    </CenteredContainer>
   )
 }

@@ -3,6 +3,7 @@ import { Card, Form, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
+import CenteredContainer from '../CenteredContainer';
 
 export default function Signin() {
   const emailRef = useRef();
@@ -31,7 +32,7 @@ export default function Signin() {
   }
     
   return (
-    <>
+    <CenteredContainer>
       <Toaster />
       <h1 className="text-center mb-5 title"><span className="emphasis"><i class="fas fa-code title-logo"></i> k</span>Drive</h1>
       <Card>
@@ -59,6 +60,6 @@ export default function Signin() {
       <div className="w-100 text-center mt-2">
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </div>  
-    </>
+    </CenteredContainer>
   )
 }

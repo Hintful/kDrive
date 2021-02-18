@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
+import CenteredContainer from '../CenteredContainer';
 
-const Dashboard = () => {
+const Profile = () => {
 
   async function handleSignOut() {
     setError(""); // reset
@@ -27,7 +28,7 @@ const Dashboard = () => {
   const history = useHistory();
 
   return (  
-    <div>
+    <CenteredContainer>
       <Toaster />
       <Card>
         <Card.Body>
@@ -42,8 +43,8 @@ const Dashboard = () => {
       <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleSignOut}>Sign Out</Button>
       </div>  
-    </div>
+    </CenteredContainer>
   );
 }
  
-export default Dashboard;
+export default Profile;
