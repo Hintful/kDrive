@@ -14,7 +14,7 @@ function App() {
     <Container className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}>
       <div className="w-100" style={{ maxWidth: '400px' }}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path="/" component={Dashboard} />
