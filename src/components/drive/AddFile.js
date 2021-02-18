@@ -1,5 +1,5 @@
 import React from 'react';
-import { storage } from '../../firebase';
+import { storage, database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT } from '../../hooks/UseFolder';
 
@@ -22,6 +22,25 @@ const AddFile = ({ currentFolder }) => {
     : `${currentFolder.path.map(obj => obj.name).join("/")}/${currentFolder.name}/${file.name}`
 
     const uploadTask = storage.ref(`/files/${currentUser.uid}/${filePath}`).put(file);
+
+    uploadTask.on('state_changed', snapshot => {
+
+    }, () => {
+      // err
+
+    }, () => {
+      // complete
+      uploadTask.snapshot.ref.getDownloadURL().then(url => {
+        // console.log(url);
+        database.files.add({
+          url,
+          name: file.name,
+          createdAt: database.getCurrentTimestamp(),
+          folderId: currentFolder.id,
+          owner: currentUser.uid
+        })
+      })
+    })
   }
   return (  
     <label className="btn btn-outline-success btn-sm m-0 mr-2">
