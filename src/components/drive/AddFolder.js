@@ -6,6 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 const AddFolder = () => {
   const [modal, setModal] = useState(false); // modal = true if modal is open, false otherwise
   const [name, setName] = useState(""); // state values for add folder name
+  const [currentFolder, setCurrentFolder] = useState(null);
   const { currentUser } = useAuth();
 
   const toggleModal = () => {
@@ -15,8 +16,13 @@ const AddFolder = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // stop refresh
 
+    if (currentFolder == null) {
+      return // must be in a folder or root
+    }
+
     database.folders.add({
       name: name,
+      parentFolderId: currentFolder.id,
       owner: currentUser.uid,
       createdAt: database.getCurrentTimestamp()
     })
