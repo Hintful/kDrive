@@ -30,7 +30,7 @@ export default function Signup() {
       await signUp(emailRef.current.value, pwRef.current.value);
       toast.success("Account created!", { duration: 1500 });
       setTimeout(() => {
-        history.push("/"); // redirect to dashboard page once successful
+        history.push("/user"); // redirect to dashboard page once successful
       }, 1500);
     } catch {
       toast.error("Failed to create account.", { duration: 4000 });

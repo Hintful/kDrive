@@ -38,7 +38,7 @@ export default function UpdateProfile() {
     Promise.all(handlePromises).then(() => {
       toast.success("Profile successfully updated!", { duration: 1500 });
       setTimeout(() => {
-        history.push('/');
+        history.push('/user');
         setLoading(false)
       }, 1500);
     }).catch(() => {
@@ -74,7 +74,7 @@ export default function UpdateProfile() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <Link to="/">Go back</Link>
+        <Link to="/user">Go back</Link>
       </div>  
     </CenteredContainer>
   )
