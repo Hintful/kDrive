@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Signup from './auth/Signup';
 import { AuthProvider } from "../contexts/AuthContext";
-import { MemoryRouter as Router } from 'react-router';
-import { Switch, Route } from 'react-router-dom';
+// import {  } from 'react-router';
+import { MemoryRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 import Profile from './auth/Profile';
 import Signin from './auth/Signin';
 import PrivateRoute from './auth/PrivateRoute';
 import PasswordReset from './auth/PasswordReset';
 import UpdateProfile from './auth/UpdateProfile';
 import Dashboard from './drive/Dashboard';
+import ReactGA from 'react-ga';
+
+function usePageViews() {
+  let pvLocation = useLocation();
+  useEffect(() => {
+    if(!window.GA_INIT) {
+      ReactGA.initialize("UA-186165133-1");
+      window.GA_INIT = true;
+    }
+    ReactGA.set({ page: pvLocation.pathname });
+    ReactGA.pageview(pvLocation.pathname);
+  }, [pvLocation]);
+}
 
 function App() {
+  usePageViews();
+
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <AuthProvider>

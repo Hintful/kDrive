@@ -3,6 +3,7 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import { database } from '../../firebase'
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT } from '../../hooks/UseFolder';
+import ReactGA from 'react-ga';
 
 const AddFolder = ({ currentFolder }) => {
   const [modal, setModal] = useState(false); // modal = true if modal is open, false otherwise
@@ -43,6 +44,12 @@ const AddFolder = ({ currentFolder }) => {
       <Button onClick={toggleModal}
         variant="outline-success"
         size="sm"
+        onClick={() => {
+          ReactGA.event({
+            category: 'kDrive',
+            action: 'Clicked Create New Folder button'
+          });
+        }}
       >
         <i className="fas fa-folder-plus"></i> Create New Folder
       </Button>

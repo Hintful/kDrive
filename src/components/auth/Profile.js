@@ -4,10 +4,15 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import CenteredContainer from '../CenteredContainer';
+import ReactGA from 'react-ga';
 
 const Profile = () => {
 
   async function handleSignOut() {
+    ReactGA.event({
+      category: 'kDrive',
+      action: 'Clicked Sign Out button'
+    });
     setError(""); // reset
 
     try {
@@ -37,8 +42,22 @@ const Profile = () => {
             <Alert variant="danger">{error}</Alert>
           }
           <strong>Email:</strong> { currentUser.email}
-          <Link to="/update-profile" className="btn btn-info w-100 mt-3">Update Profile</Link>
-          <Link to="/" className="btn btn-primary w-100 mt-3">Back to Dashboard</Link>
+          <Link to="/update-profile" className="btn btn-info w-100 mt-3"
+            onClick={() => {
+              ReactGA.event({
+                category: 'kDrive',
+                action: 'Clicked Update Profile button'
+              });
+            }}
+          >Update Profile</Link>
+          <Link to="/" className="btn btn-primary w-100 mt-3"
+            onClick={() => {
+              ReactGA.event({
+                category: 'kDrive',
+                action: 'Clicked Back to Dashboard button'
+              });
+            }}
+          >Back to Dashboard</Link>
           <Link to="" className="btn btn-outline-danger w-100 mt-3" onClick={handleSignOut}>Sign Out</Link>
 
           {/* <Button className="btn btn-outline-danger w-100 mt-3" variant="link" style={{ color: "red" }} onClick={handleSignOut}>Sign Out</Button> */}

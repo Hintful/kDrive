@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import CenteredContainer from '../CenteredContainer';
+import ReactGA from 'react-ga';
 
 export default function Signup() {
   const emailRef = useRef();
@@ -60,7 +61,14 @@ export default function Signup() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={pwConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} type="submit" className="w-100">Sign Up</Button>
+            <Button disabled={loading} type="submit" className="w-100"
+              onClick={() => {
+                ReactGA.event({
+                  category: 'kDrive',
+                  action: 'Clicked Sign Up button'
+                });
+              }}
+            >Sign Up</Button>
           </Form>
         </Card.Body>
       </Card>

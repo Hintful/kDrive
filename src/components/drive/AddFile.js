@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { ROOT } from '../../hooks/UseFolder';
 import { uuid } from 'uuidv4';
 import { ProgressBar, Toast } from 'react-bootstrap';
+import ReactGA from 'react-ga';
 
 const AddFile = ({ currentFolder }) => {
   const [ uploadingFiles, setUploadingFiles ] = useState([]);
@@ -12,10 +13,6 @@ const AddFile = ({ currentFolder }) => {
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
-
-    // if (!currentFolder || !file) {
-    //   return
-    // }
 
     if (currentFolder == null || file == null) {
       return
@@ -95,13 +92,18 @@ const AddFile = ({ currentFolder }) => {
   }
   return (  
     <>
-      <label className="btn btn-outline-success btn-sm m-0 mr-2">
+      <label className="btn btn-outline-success btn-sm m-0 mr-2"
+        onClick={() => {
+          ReactGA.event({
+            category: 'kDrive',
+            action: 'Clicked Upload File button'
+          });
+        }}
+      >
         <i class="fas fa-cloud-upload-alt"></i> Upload File
         <input type="file" onChange={handleUpload} 
         style={{ 
           opacity: 0,
-          // position: "absolute",
-          // top: -500
           display: "none"
         }}
         />

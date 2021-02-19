@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import CenteredContainer from '../CenteredContainer';
+import ReactGA from 'react-ga';
 
 export default function PasswordReset() {
   const emailRef = useRef();
@@ -39,7 +40,14 @@ export default function PasswordReset() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Button disabled={loading} type="submit" className="w-100">Reset Password</Button>
+            <Button disabled={loading} type="submit" className="w-100"
+              onClick={() => {
+                ReactGA.event({
+                  category: 'kDrive',
+                  action: 'Clicked Reset Password button'
+                });
+              }}
+            >Reset Password</Button>
           </Form>
           <div className="w-100 text-center mt-4">
             <Link to="/signin">Sign In</Link>

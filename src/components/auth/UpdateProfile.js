@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import CenteredContainer from '../CenteredContainer';
+import ReactGA from 'react-ga';
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -36,6 +37,10 @@ export default function UpdateProfile() {
     }
 
     Promise.all(handlePromises).then(() => {
+      ReactGA.event({
+        category: 'kDrive',
+        action: 'User updated profile'
+      });
       toast.success("Profile successfully updated!", { duration: 1500 });
       setTimeout(() => {
         history.push('/user');

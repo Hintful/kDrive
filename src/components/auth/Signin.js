@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import CenteredContainer from '../CenteredContainer';
+import ReactGA from 'react-ga';
 
 export default function Signin() {
   const emailRef = useRef();
@@ -50,7 +51,14 @@ export default function Signin() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={pwRef} required />
             </Form.Group>
-            <Button disabled={loading} type="submit" className="w-100">Sign In</Button>
+            <Button disabled={loading} type="submit" className="w-100"
+              onClick={() => {
+                ReactGA.event({
+                  category: 'kDrive',
+                  action: 'Clicked Sign In button'
+                });
+              }}
+            >Sign In</Button>
           </Form>
           <div className="w-100 text-center mt-4">
             <Link to="/reset">Forgot password?</Link>
