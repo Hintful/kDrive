@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Signup from './auth/Signup';
 import { AuthProvider } from "../contexts/AuthContext";
 // import {  } from 'react-router';
-import { MemoryRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import Profile from './auth/Profile';
 import Signin from './auth/Signin';
 import PrivateRoute from './auth/PrivateRoute';
@@ -27,25 +27,23 @@ function App() {
   usePageViews();
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <AuthProvider>
-        <Switch>
-          { /* Drive Components */ }
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
+    <AuthProvider>
+      <Switch>
+        { /* Drive Components */ }
+        <PrivateRoute exact path="/" component={Dashboard} />
+        <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
 
-          { /* Profile Components */ }
-          <PrivateRoute path="/user" component={Profile} />
-          <PrivateRoute path="/update-profile" component={UpdateProfile} />
+        { /* Profile Components */ }
+        <PrivateRoute path="/user" component={Profile} />
+        <PrivateRoute path="/update-profile" component={UpdateProfile} />
 
-          { /* Authentication Components */ }
-          <Route path="/signup" component={Signup} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/reset" component={PasswordReset} />
-          
-        </Switch>  
-      </AuthProvider>
-    </Router>
+        { /* Authentication Components */ }
+        <Route path="/signup" component={Signup} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/reset" component={PasswordReset} />
+        
+      </Switch>  
+    </AuthProvider>
   )
 }
 
