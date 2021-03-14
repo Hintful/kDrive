@@ -27,7 +27,7 @@ const NavbarComponent = () => {
             });
           }}
         >
-          <i class="fas fa-user"></i> Profile
+          <i className="fas fa-user"></i> Profile
         </Nav.Link>
       </Nav>
 

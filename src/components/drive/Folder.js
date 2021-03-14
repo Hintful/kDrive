@@ -17,7 +17,7 @@ const Folder = ({ folder }) => {
         });
       }}
     >
-      <i class="fas fa-folder"></i> {folder.name}
+      <i className="fas fa-folder"></i> {folder.name}
     </Button>
   );
 }

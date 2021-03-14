@@ -100,7 +100,7 @@ const AddFile = ({ currentFolder }) => {
           });
         }}
       >
-        <i class="fas fa-cloud-upload-alt"></i> Upload File
+        <i className="fas fa-cloud-upload-alt"></i> Upload File
         <input type="file" onChange={handleUpload} 
         style={{ 
           opacity: 0,

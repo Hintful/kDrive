@@ -12,7 +12,7 @@ const File = ({ file }) => {
         });
       }}
     >
-      <i class="fas fa-file-alt"></i> { file.name }
+      <i className="fas fa-file-alt"></i> { file.name }
     </a>
   );
 }

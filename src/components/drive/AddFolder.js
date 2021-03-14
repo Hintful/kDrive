@@ -41,10 +41,11 @@ const AddFolder = ({ currentFolder }) => {
   }
   return (
     <>
-      <Button onClick={toggleModal}
+      <Button
         variant="outline-success"
         size="sm"
         onClick={() => {
+          toggleModal();
           ReactGA.event({
             category: 'kDrive',
             action: 'Clicked Create New Folder button'
